@@ -17,4 +17,4 @@ printf(RED_FG "This text is red." ANSI_NORMAL);
 - Compatibility with all terminal types is not guaranteed.
 
 ## Contribution
-Contributions to extend or improve this header file are welcome. Please adhere to the existing coding conventions and submit a pull request for review.
+Contributions to extend or improve this header file are welcome. So long as your code is legible, submit a pull request for review.
