@@ -30,13 +30,13 @@
     #define CYAN_FG ANSI_START "36m"            // Cyan foreground
     #define WHITE_FG ANSI_START "37m"           // White foreground
     #define GRAY_FG ANSI_START "90m"            // Gray foreground
-    #define BRIGHT_RED_FG ANSI_START "91m"      // Bright red foreground
-    #define BRIGHT_GREEN_FG ANSI_START "92m"    // Bright green foreground
-    #define BRIGHT_YELLOW_FG ANSI_START "93m"   // Bright yellow foreground
-    #define BRIGHT_BLUE_FG ANSI_START "94m"     // Bright blue foreground
-    #define BRIGHT_MAGENTA_FG ANSI_START "95m"  // Bright magenta foreground
-    #define BRIGHT_CYAN_FG ANSI_START "96m"     // Bright cyan foreground
-    #define BRIGHT_WHITE_FG ANSI_START "97m"    // Bright white foreground
+    #define RED_FG_BRIGHT ANSI_START "91m"      // Bright red foreground
+    #define GREEN_FG_BRIGHT ANSI_START "92m"    // Bright green foreground
+    #define YELLOW_FG_BRIGHT ANSI_START "93m"   // Bright yellow foreground
+    #define BLUE_FG_BRIGHT ANSI_START "94m"     // Bright blue foreground
+    #define MAGENTA_FG_BRIGHT ANSI_START "95m"  // Bright magenta foreground
+    #define CYAN_FG_BRIGHT ANSI_START "96m"     // Bright cyan foreground
+    #define WHITE_FG_BRIGHT ANSI_START "97m"    // Bright white foreground
 
     // Background color definitions
     #define BLACK_BG ANSI_START "40m"           // Black background
@@ -48,13 +48,13 @@
     #define CYAN_BG ANSI_START "46m"            // Cyan background
     #define WHITE_BG ANSI_START "47m"           // White background
     #define GRAY_BG ANSI_START "100m"           // Gray background
-    #define BRIGHT_RED_BG ANSI_START "101m"     // Bright red background
-    #define BRIGHT_GREEN_BG ANSI_START "102m"   // Bright green background
-    #define BRIGHT_YELLOW_BG ANSI_START "103m"  // Bright yellow background
-    #define BRIGHT_BLUE_BG ANSI_START "104m"    // Bright blue background
-    #define BRIGHT_MAGENTA_BG ANSI_START "105m" // Bright magenta background
-    #define BRIGHT_CYAN_BG ANSI_START "106m"    // Bright cyan background
-    #define BRIGHT_WHITE_BG ANSI_START "107m"   // Bright white background
+    #define RED_BG_BRIGHT ANSI_START "101m"     // Bright red background
+    #define GREEN_BG_BRIGHT ANSI_START "102m"   // Bright green background
+    #define YELLOW_BG_BRIGHT ANSI_START "103m"  // Bright yellow background
+    #define BLUE_BG_BRIGHT ANSI_START "104m"    // Bright blue background
+    #define MAGENTA_BG_BRIGHT ANSI_START "105m" // Bright magenta background
+    #define CYAN_BG_BRIGHT ANSI_START "106m"    // Bright cyan background
+    #define WHITE_BG_BRIGHT ANSI_START "107m"   // Bright white background
 
     // Text style definitions
     #define NORMAL ANSI_START "0m"            // Normal style
