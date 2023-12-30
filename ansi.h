@@ -84,29 +84,27 @@
     #define NOT_OVERLINED ANSI_START "55m"             // Turns off overline
 
 
+
     // Cursor control sequences
-    #define CURSOR_UP(n) std::cout << ANSI_START << n << "A"                    // Move cursor up n lines
-    #define CURSOR_DOWN(n) std::cout << ANSI_START << n << "B"                  // Move cursor down n lines
-    #define CURSOR_FORWARD(n) std::cout << ANSI_START << n << "C"               // Move cursor forward n columns
-    #define CURSOR_BACK(n) std::cout << ANSI_START << n << "D"                  // Move cursor back n columns
-    #define CURSOR_NEXT_LINE(n) std::cout << ANSI_START << n << "E"             // Move cursor to the beginning of the line n lines down
-    #define CURSOR_PREVIOUS_LINE(n) std::cout << ANSI_START << n << "F"         // Move cursor to the beginning of the line n lines up
-    #define CURSOR_HORIZONTAL_ABSOLUTE(n) std::cout << ANSI_START << n << "G"   // Move cursor to column n
-    #define CURSOR_TO(n, m) std::cout << ANSI_START << n << ";" << m << "H"     // Move cursor to row n, column m
-    #define CURSOR_TO_ALT(n, m) std::cout << ANSI_START << n << ";" << m << "f" // Alternative command to move cursor to row n, column m
-
-    // Enumeration for different erase operations
-    enum Erase {
-        CURSOR_TO_END = 0,           // Erase from cursor to the end of the screen
-        CURSOR_TO_BEGINNING = 1,     // Erase from cursor to the beginning of the screen
-        ENTIRE_LINE = 2              // Erase the entire line
-    };
-
+    #define CURSOR_UP(n) printf(ANSI_START << n << "A");                // Move cursor up n lines
+    #define CURSOR_DOWN(n) printf(ANSI_START "%dB", n)                  // Move cursor down n lines
+    #define CURSOR_FORWARD(n) printf(ANSI_START "%dC", n)               // Move cursor forward n columns
+    #define CURSOR_BACK(n) printf(ANSI_START "%dD", n)                  // Move cursor back n columns
+    #define CURSOR_NEXT_LINE(n) printf(ANSI_START "%dE", n)             // Move cursor to the beginning of the line n lines down
+    #define CURSOR_PREVIOUS_LINE(n) printf(ANSI_START "%dF", n)         // Move cursor to the beginning of the line n lines up
+    #define CURSOR_HORIZONTAL_ABSOLUTE(n) printf(ANSI_START "%dG", n)   // Move cursor to column n
+    #define CURSOR_TO(n, m) printf(ANSI_START "%d;%dH", n, m)           // Move cursor to row n, column m
+    #define CURSOR_TO_ALT(n, m) printf(ANSI_START "%d;%df", n, m)       // Alternative command to move cursor to row n, column m
     // Erase and scroll commands
-    #define ERASE_DISPLAY(n) std::cout << ANSI_START << n << "J"           // Erase part of the display
-    #define ERASE_LINE(n) std::cout << ANSI_START << n << "K"              // Erase part of the line
-    #define SCROLL_UP(n) std::cout << ANSI_START << n << "S"               // Scroll up n lines
-    #define SCROLL_DOWN(n) std::cout << ANSI_START << n << "T"             // Scroll down n lines
+    #define ERASE_DISPLAY(n) printf(ANSI_START "%dJ", n)           // Erase part of the display
+    #define ERASE_LINE(n) printf(ANSI_START "%dK", n)              // Erase part of the line
+    #define SCROLL_UP(n) printf(ANSI_START "%dS", n)               // Scroll up n lines
+    #define SCROLL_DOWN(n) printf(ANSI_START "%dT", n)             // Scroll down n lines
+
+    //different erase operations:
+    #define ERASE_TO_END 0 // Erase from the current cursor position to the end of the current line
+    #define ERASE_TO_BEGINNING 1 // Erase from the current cursor position to the start of the current line
+    #define ERASE_ALL 2 // Erase the entire current line
 
     // Non-standard ANSI commands for cursor saving and restoring
     #define CURSOR_SAVE ANSI_START "s"    // Save cursor position (non-standard)
@@ -118,22 +116,30 @@
     // Check if extended ANSI color support is enabled
     #ifndef ANSI_COLORS_255_H
     #define ANSI_COLORS_255_H
-       
-        // Extended ANSI color definitions
-        #define ANSI_255_FG(n) ANSI_START "38;5;" + std::to_string(n) + "m" // 255 foreground color
-        #define ANSI_255_BG(n) ANSI_START "48;5;" + std::to_string(n) + "m" // 255 background color
-    
+        #if defined(__cplusplus)
+            // Extended ANSI color definitions
+            #define ANSI_255_FG(n) ANSI_START "38;5;" + std::to_string(n) + "m" // 255 foreground color
+            #define ANSI_255_BG(n) ANSI_START "48;5;" + std::to_string(n) + "m" // 255 background color
+        #else
+            // Extended ANSI color definitions
+            #define ANSI_255_FG(n) ANSI_START "38;5;" #n "m" // 255 foreground color
+            #define ANSI_255_BG(n) ANSI_START "48;5;" #n "m" // 255 background color
+        #endif
     #endif
 #endif
 
 #ifdef ANSI_COLORS_24bit
     // Check if 16 million color support is enabled
-    #ifndef ANSI_COLORS_16M_H
-    #define ANSI_COLORS_16M_H
-
-        // 16 million color definitions
-        #define ANSI_16M_FG(r, g, b) ANSI_START "38;2;" + std::to_string(r) + ";" + std::to_string(g) + ";" std::to_string(b) "m" // 24-bit foreground color
-        #define ANSI_16M_BG(r, g, b) ANSI_START "48;2;" + std::to_string(r) + ";" + std::to_string(g) + ";" std::to_string(b) "m" // 24-bit background color
-
+    #ifndef ANSI_COLORS_24bit_H
+    #define ANSI_COLORS_24bit_H
+        #ifdef(__cplusplus)
+            // 16 million color definitions
+            #define ANSI_16M_FG(r, g, b) ANSI_START "38;2;" + std::to_string(r) + ";" + std::to_string(g) + ";" std::to_string(b) "m" // 24-bit foreground color
+            #define ANSI_16M_BG(r, g, b) ANSI_START "48;2;" + std::to_string(r) + ";" + std::to_string(g) + ";" std::to_string(b) "m" // 24-bit background color
+        #else
+            // 16 million color definitions
+            #define ANSI_16M_FG(r, g, b) ANSI_START "38;2;" #r ";" #g ";" #b "m" // 24-bit foreground color
+            #define ANSI_16M_BG(r, g, b) ANSI_START "48;2;" #r ";" #g ";" #b "m" // 24-bit background color
+        #endif
     #endif
 #endif
