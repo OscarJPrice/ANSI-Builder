@@ -1,5 +1,3 @@
-# README for the *ansi_macros* branch
-
 ## Overview
 The `ansi.h` header file provides a collection of macros defining ANSI escape sequences for styling and formatting text in terminal applications. These macros enable developers to easily manipulate text output in terms of colors, styles, and cursor movements.
 
