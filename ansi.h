@@ -84,8 +84,8 @@
     #define NOT_OVERLINED ANSI_START "55m"             // Turns off overline
 
     // End of ANSI formatting sequences
-    #define ANSI_END NORMAL
-    #define RESET NORMAL
+    #define ANSI_END ANSI_NORMAL
+    #define RESET ANSI_NORMAL
 
     // Cursor control sequences
     #define CURSOR_UP(n) std::cout << ANSI_START << n << "A"                    // Move cursor up n lines
