@@ -7,7 +7,7 @@
  * and controlling cursor movements.
  * https://en.wikipedia.org/wiki/ANSI_escape_code
  *
- * @note This file doesn't cover all ANSI escape sequences, only those used in this project. 
+ * @note This file doesn't cover all ANSI escape sequences.
  * Compatibility with all terminal types is not guaranteed.
  */
 
